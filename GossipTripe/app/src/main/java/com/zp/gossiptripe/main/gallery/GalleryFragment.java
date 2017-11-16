@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.blankj.utilcode.utils.SizeUtils;
 import com.zp.gossiptripe.R;
 import com.zp.gossiptripe.main.gallery.choice.ChoiceFragment;
 import com.zp.gossiptripe.main.gallery.latest.LatestUpdateFragment;
@@ -18,24 +19,16 @@ import com.zp.gossiptripe.main.gallery.latest.LatestUpdateFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindString;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GalleryFragment extends Fragment {
+public class GalleryFragment extends Fragment implements PagerSlidingTabStrip.OnPositionChangeListener{
 
-    @BindView(R.id.vp)
     ViewPager mVp;
-    @BindView(R.id.tabs)
     PagerSlidingTabStrip mtab;
 
-    @BindString(R.string.choice)
-    String str_choice;
-    @BindString(R.string.latestupdate)
-    String str_latestUpdate;
+
 
     List<Fragment> mFragments;
     FragmentManager fm;
@@ -50,21 +43,27 @@ public class GalleryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
-        ButterKnife.bind(this, view);
+        mVp = (ViewPager) view.findViewById(R.id.vp);
+        mtab = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
         init();
         return view;
     }
 
     private void init(){
+        String str_choice = getResources().getString(R.string.choice);
+        String str_latestUpdate = getResources().getString(R.string.latestupdate);
         mTitles.add(str_choice);
         mTitles.add(str_latestUpdate);
         mFragments = getFragments();
         fm = getChildFragmentManager();
         mVp.setAdapter(new GalleryFragmentAdapter(fm));
         mtab.setViewPager(mVp);
-        mtab.setTextColorResource(R.color.tap_personal);
-        mtab.setTextSize(60);
+        mtab.setSelectedTextColorResource(R.color.tap_personal);
+        mtab.setTextSize(SizeUtils.dp2px(getContext(),20));
         mtab.setTabPaddingLeftRight(100);
+
+        mtab.setOnPositionChangeListener(this);
+        mtab.setIndicatorPadding(120);
         mtab.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -89,6 +88,11 @@ public class GalleryFragment extends Fragment {
         list.add(ChoiceFragment.newInstance());
         list.add(LatestUpdateFragment.newInstance());
         return list;
+    }
+
+    @Override
+    public void onChage(int position) {
+
     }
 
 

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/personInfoBg"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context="com.zp.gossiptripe.main.personal.PersonInfoActivity">
+
+    <RelativeLayout
+        android:id="@+id/headRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/settinglistbg"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp">
+
+        <TextView
+            android:id="@+id/headText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/personInfoHead"
+            android:textSize="18sp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/head"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:src="@mipmap/touxiang"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/nameRoot"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/headRoot"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/settinglistbg"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp">
+
+        <TextView
+            android:id="@+id/nameKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/personInfoName"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/nameValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="乔乔妞妞"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/birthdayRoot"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/nameRoot"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/settinglistbg"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp">
+
+        <TextView
+            android:id="@+id/birthdayKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/personInfoBirthday"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/birthdayValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="2008-12-28"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/addressRoot"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/birthdayRoot"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/settinglistbg"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp">
+
+        <TextView
+            android:id="@+id/addressKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/personInfoAddress"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/addressValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="江苏苏州十新路1号"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/organizationRoot"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/addressRoot"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/settinglistbg"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp">
+
+        <TextView
+            android:id="@+id/organizationKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/personInfoOrganization"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/organizationValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="浦东新区少年宫"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+</RelativeLayout>

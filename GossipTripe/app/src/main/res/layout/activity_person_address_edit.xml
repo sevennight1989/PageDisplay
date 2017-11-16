@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_person_address_edit"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/personInfoBg"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.zp.gossiptripe.main.personal.PersonAddressEditActivity">
+
+    <RelativeLayout
+        android:id="@+id/provinceRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/provinceEditKey"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:background="@color/list_bg"
+            android:gravity="center_vertical"
+            android:text="@string/province"
+            android:textSize="18sp"
+            android:paddingLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/provinceEdit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_toEndOf="@+id/provinceEditKey"
+            android:background="@color/list_bg"
+            android:gravity="center_vertical"
+            android:text="@string/province"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/addressRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/provinceRoot"
+        android:layout_marginTop="2dp">
+
+        <TextView
+            android:id="@+id/addressEditKey"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:background="@color/list_bg"
+            android:gravity="center_vertical"
+            android:text="@string/address"
+            android:textSize="18sp"
+            android:paddingLeft="10dp"/>
+
+        <com.zp.gossiptripe.viewutils.view.ClearEditText
+            android:id="@+id/edit_address"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_toEndOf="@+id/addressEditKey"
+            android:background="@drawable/settinglistbg"
+            android:gravity="center_vertical"
+            android:textSize="18sp"/>
+    </RelativeLayout>
+</RelativeLayout>

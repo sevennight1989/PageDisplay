@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_person_organization"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.zp.gossiptripe.main.personal.PersonOrganizationActivity"
+    android:background="@color/personInfoBg">
+    <com.zp.gossiptripe.viewutils.view.ClearEditText
+        android:id="@+id/edit_organization"
+        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/settinglistbg"
+        android:hint="浦东新区少年宫"
+        android:textSize="18sp"/>
+</RelativeLayout>

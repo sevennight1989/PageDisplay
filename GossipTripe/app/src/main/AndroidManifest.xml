@@ -2,13 +2,16 @@
 <manifest package="com.zp.gossiptripe"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".MainApplication">
+        android:theme="@style/MyAppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -16,6 +19,32 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".product.AddProductActivity"/>
+        <activity android:name=".main.personal.PersonInfoActivity"/>
+        <activity android:name=".main.personal.PersonNameEditActivity">
+        </activity>
+        <activity android:name=".main.personal.PersonAgeEditActivity">
+        </activity>
+        <activity android:name=".main.personal.PersonOrganizationActivity">
+        </activity>
+        <activity android:name=".main.personal.PersonAddressEditActivity">
+        </activity>
+        <activity android:name=".main.personal.regist.RegistAccountActivity">
+        </activity>
+        <activity android:name=".main.personal.forgetpsd.ForgetPasswordActivity">
+        </activity>
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="577f6675e0f55abe82000075">
+        </meta-data>
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="026dbaa0546465de22379b657e785c99">
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Channel ID" >
+        </meta-data>
     </application>
 
 </manifest>

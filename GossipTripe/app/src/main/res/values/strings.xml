@@ -1,12 +1,61 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">GossipTripe</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment11</string>
     <string name="gallery">小小画廊</string>
     <string name="movement">活动</string>
     <string name="program">节目</string>
     <string name="personal">个人专区</string>
+    <string name="personalInfo">个人信息</string>
     <string name="choice">精选</string>
     <string name="latestupdate">最新更新</string>
+    <string name="product_content">冰人和火人被困在一个恐怖的地方,他们齐心协力一起找到终点，回到他们的家</string>
+    <string name="createAge">创作年龄 %1$d 岁</string>
+    <string name="number">编号 <xliff:g id="No.">%1$d</xliff:g></string>
+    <string name="personInfoHead">头像</string>
+    <string name="personInfoName">小画家姓名</string>
+    <string name="personInfoBirthday">小画家出生日期</string>
+    <string name="personInfoAddress">地址</string>
+    <string name="personInfoOrganization">培训机构</string>
+    <string name="publishProduct">发布作品</string>
+    <string name="cancel">取消</string>
+    <string name="publish">发布</string>
+    <string name="save">保存</string>
+    <string name="selectBirthday">选择出生时间</string>
+    <string name="personAge">年龄  <xliff:g id="age">%1$d</xliff:g>岁</string>
+    <string name="selectBirthdayTitle">选择出生时间,系统将自动转为年龄</string>
+    <string name="province">省市</string>
+    <string name="address">详细地址</string>
+    <string name="toastOverCurrentDate">出生时间不能晚于当前时间</string>
+    <string name="ageAndLocation"><xliff:g id="age">%1$d</xliff:g>岁  <xliff:g id="age">%2$s</xliff:g></string>
+    <string name="space">个人空间</string>
+    <string name="integral">积分</string>
+    <string name="rule">规则说明</string>
+    <string name="loginTitle">用户未登陆</string>
+    <string name="loginBt">登陆</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="registAccount">新用户注册</string>
+    <string name="forgetPassword">忘记密码</string>
+    <string name="loginSuccess">登陆成功</string>
+    <string name="loginFailed">登陆失败,请检查用户名和密码</string>
+    <string name="loginFailedInputError">用户名或密码不能为空</string>
+    <string name="logoff">退出登陆</string>
+    <string name="logoffSuccess">注销成功</string>
+    <string name="logofffailed">注销失败</string>
+    <string name="actionbartitlefillininfo">填写个人资料</string>
+    <string name="actionbartitleforgetpsd">找回密码</string>
+    <string name="registUserName">用户名（必填）</string>
+    <string name="registUserPassword">密码（必填）</string>
+    <string name="registUserPasswordAgain">再次输入密码（必填）</string>
+    <string name="registName">小画家姓名（必填）</string>
+    <string name="registBithday">小画家出生日期（必填）</string>
+    <string name="registProvince">省市（必填）</string>
+    <string name="registAddress">详细地址（必填）</string>
+    <string name="registOrganization">培训机构（必填）</string>
+    <string name="registNextButton">下一步</string>
+    <string name="hasRepeatUserName">用户名已经被注册，请更换用户名</string>
+    <string name="twicePasswordDifferent">两次密码不一样</string>
+    <string name="hasNullItem">有未填项</string>
+    <string name="registSuccess">注册成功,即将自定登陆</string>
 </resources>

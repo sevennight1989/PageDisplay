@@ -7,4 +7,7 @@
     <color name="tap_movement">#B23AEE</color>
     <color name="tap_program">#5CACEE</color>
     <color name="tap_personal">#FFC125</color>
+    <color name="list_bg">#FFFFFF</color>
+    <color name="personInfoBg">#C9C9C9</color>
+    <color name="nextButtonBg">#DAA520</color>
 </resources>
