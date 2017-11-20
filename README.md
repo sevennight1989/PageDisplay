@@ -1,2 +1,2 @@
 # PageDisplay
-一个演示项目，包括android 客户端和 java 后台,这个工程只是android 客户端
+一个小孩作品演示项目android客户端
