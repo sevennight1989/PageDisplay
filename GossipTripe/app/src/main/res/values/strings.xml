@@ -49,10 +49,11 @@
     <string name="registUserPassword">密码（必填）</string>
     <string name="registUserPasswordAgain">再次输入密码（必填）</string>
     <string name="registName">小画家姓名（必填）</string>
-    <string name="registBithday">小画家出生日期（必填）</string>
-    <string name="registProvince">省市（必填）</string>
-    <string name="registAddress">详细地址（必填）</string>
-    <string name="registOrganization">培训机构（必填）</string>
+    <string name="registEmail">邮箱(必填)</string>
+    <string name="registBithday">小画家出生日期（选填）</string>
+    <string name="registProvince">省市（选填）</string>
+    <string name="registAddress">详细地址（选填）</string>
+    <string name="registOrganization">培训机构（选填）</string>
     <string name="registNextButton">下一步</string>
     <string name="hasRepeatUserName">用户名已经被注册，请更换用户名</string>
     <string name="twicePasswordDifferent">两次密码不一样</string>

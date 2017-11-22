@@ -57,6 +57,13 @@
             android:layout_height="40dp"
             android:hint="@string/registName"/>
 
+        <EditText
+            android:id="@+id/registEmail"
+            style="@style/regist_text_item_styles"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:hint="@string/registEmail"/>
+
         <TextView
             android:id="@+id/registBirthday"
             style="@style/regist_text_item_styles"

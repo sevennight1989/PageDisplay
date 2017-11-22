@@ -43,6 +43,7 @@ public class RegistAccountActivity extends BaseActionActivity implements View.On
     private EditText mUserName;
     private EditText mPassword;
     private EditText mName;
+    private EditText mEmail;
     private TextView mBirthday;
     private TextView mProvince;
     private EditText mAddress;
@@ -65,6 +66,7 @@ public class RegistAccountActivity extends BaseActionActivity implements View.On
         mHeadIcon = (CircleImageView) findViewById(R.id.registHead);
         mUserName = (EditText) findViewById(R.id.registUserName);
         mPassword = (EditText) findViewById(R.id.registUserPassword);
+        mEmail = (EditText) findViewById(R.id.registEmail);
         mName = (EditText) findViewById(R.id.registPersonName);
         mProvince = (TextView) findViewById(R.id.registProvince);
         mBirthday = (TextView) findViewById(R.id.registBirthday);
@@ -200,6 +202,7 @@ public class RegistAccountActivity extends BaseActionActivity implements View.On
         registerBean.setUserName(mUserName.getText().toString());
         registerBean.setPassword(mPassword.getText().toString());
         registerBean.setHeadPath(getIconPath());
+        registerBean.setEmail(mEmail.getText().toString());
         registerBean.setName(mName.getText().toString());
         registerBean.setBirthday(mBirthday.getText().toString());
         registerBean.setProvince(mProvince.getText().toString());

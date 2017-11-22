@@ -9,11 +9,20 @@ public class RegisterBean {
     private String userName;
     private String password;
     private String name;
+    private String email;
     private String headPath;
     private String birthday;
     private String province;
     private String address;
     private String organization;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getAddress() {
         return address;

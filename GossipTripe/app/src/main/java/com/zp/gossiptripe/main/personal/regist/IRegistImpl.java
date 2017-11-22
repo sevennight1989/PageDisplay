@@ -21,8 +21,8 @@ public class IRegistImpl implements IRegistInf {
         String address = registerBean.getAddress();
         String organization = registerBean.getOrganization();
         String iconPath = registerBean.getHeadPath();
-        if (userName.equals("") || password.equals("") || name.equals("") || birthday.equals("") ||
-        province.equals("") || address.equals("") || organization.equals("") || iconPath.equals("")) {
+        String email = registerBean.getEmail();
+        if (userName.equals("") || password.equals("") || name.equals("") || email.equals("") ) {
             requestListener.onFailed(1);
             return;
         }
