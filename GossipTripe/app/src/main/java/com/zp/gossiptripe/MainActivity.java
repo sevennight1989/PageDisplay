@@ -1,12 +1,17 @@
 package com.zp.gossiptripe;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,6 +27,7 @@ import com.zp.gossiptripe.main.personal.PersonalFragment;
 import com.zp.gossiptripe.main.program.ProgramFragment;
 import com.orhanobut.logger.Logger;
 import com.zp.gossiptripe.product.AddProductActivity;
+import com.zp.gossiptripe.utils.MediaFile;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -48,7 +54,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     String movement;
     String program;
     String personal;
-
+    private static final int REQUEST_CODE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +100,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
                 startActivity(intent);
+//                Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                startActivityForResult(intent, REQUEST_CODE);
             }
         });
 
@@ -108,6 +116,30 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE&& resultCode == RESULT_OK && null != data) {
+            Uri selectedVideo = data.getData();
+            String[] filePathColumn = { MediaStore.Video.Media.DATA };
+            Cursor cursor = getContentResolver().query(selectedVideo ,
+            filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String videoPath = cursor.getString(columnIndex);
+            Log.d("PengLog",videoPath);
+            if(MediaFile.isVideoFileType(videoPath)){
+
+            }else{
+                Toast.makeText(this,"您选择的不是视频格式",Toast.LENGTH_SHORT).show();
+            }
+
+            cursor.close();
         }
     }
 

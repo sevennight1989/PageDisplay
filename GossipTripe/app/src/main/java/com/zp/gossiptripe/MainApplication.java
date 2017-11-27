@@ -1,10 +1,13 @@
 package com.zp.gossiptripe;
 
 import android.app.Application;
+import android.widget.Button;
 
 import com.orhanobut.logger.Logger;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
+
+import org.xutils.x;
 
 
 /**
@@ -29,6 +32,7 @@ public class MainApplication extends Application {
                 Logger.d(s + "   " + s1);
             }
         });
-
+        x.Ext.init(this);
+        x.Ext.setDebug(BuildConfig.DEBUG);
     }
 }

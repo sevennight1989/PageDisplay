@@ -17,6 +17,7 @@ import com.blankj.utilcode.utils.ImageUtils;
 import com.blankj.utilcode.utils.KeyboardUtils;
 import com.blankj.utilcode.utils.SDCardUtils;
 import com.lljjcoder.citypickerview.widget.CityPicker;
+import com.orhanobut.logger.Logger;
 import com.zp.gossiptripe.R;
 import com.zp.gossiptripe.main.personal.BaseActionActivity;
 import com.zp.gossiptripe.main.personal.PersonBean;
@@ -24,6 +25,10 @@ import com.zp.gossiptripe.main.personal.PersonConstants;
 import com.zp.gossiptripe.main.personal.PersonalFragment;
 import com.zp.gossiptripe.utils.DateUitls;
 import com.zp.gossiptripe.viewutils.ScreenDialogUtils;
+
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -49,7 +54,8 @@ public class RegistAccountActivity extends BaseActionActivity implements View.On
     private EditText mAddress;
     private EditText mOrganization;
     Bitmap uploadBp;
-
+    private static final String TAG ="PengLog";
+    private String url = "http://192.168.1.166:8080/PDServer/common/regist.do";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,7 +199,43 @@ public class RegistAccountActivity extends BaseActionActivity implements View.On
                 ImageUtils.save(uploadBp, getIconPath(), Bitmap.CompressFormat.JPEG);
             }
             mHeadIcon.setImageBitmap(uploadBp);
+            updateImage(url,getIconPath());
         }
+    }
+
+    private void updateImage(String url,String path){
+        File file = new File(path);
+        if(!file.exists()){
+            Logger.d("上传文件不存在");
+            return;
+        }
+        RequestParams params = new RequestParams(url);
+        params.addParameter("fileName",file.getName());
+//        params.addBodyParameter(file.getName(),file,"image/*"); 图片格式
+        params.addBodyParameter(file.getName(),file,"multipart/form-data");//视频格式
+
+
+        x.http().post(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Logger.d(TAG,"onSuccess " + result);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                Logger.d(TAG,"onError " + ex.getMessage());
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
     }
 
     @Override
@@ -224,7 +266,7 @@ public class RegistAccountActivity extends BaseActionActivity implements View.On
     }
 
     private String getIconPath() {
-        return SDCardUtils.getSDCardPath() + File.separator + "headicon.jpeg";
+        return SDCardUtils.getSDCardPath()  + "headicon.jpeg";
     }
 
     @Override
