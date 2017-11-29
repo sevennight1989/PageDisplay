@@ -13,9 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bigkoo.pickerview.TimePickerView;
-import com.blankj.utilcode.utils.ImageUtils;
-import com.blankj.utilcode.utils.KeyboardUtils;
-import com.blankj.utilcode.utils.SDCardUtils;
+import com.blankj.utilcode.util.ImageUtils;
+import com.blankj.utilcode.util.KeyboardUtils;
+import com.blankj.utilcode.util.SDCardUtils;
 import com.lljjcoder.citypickerview.widget.CityPicker;
 import com.orhanobut.logger.Logger;
 import com.zp.gossiptripe.R;
@@ -23,6 +23,7 @@ import com.zp.gossiptripe.main.personal.BaseActionActivity;
 import com.zp.gossiptripe.main.personal.PersonBean;
 import com.zp.gossiptripe.main.personal.PersonConstants;
 import com.zp.gossiptripe.main.personal.PersonalFragment;
+import com.zp.gossiptripe.main.personal.regist.model.RegistBean;
 import com.zp.gossiptripe.utils.DateUitls;
 import com.zp.gossiptripe.viewutils.ScreenDialogUtils;
 
@@ -199,7 +200,7 @@ public class RegistAccountActivity extends BaseActionActivity implements View.On
                 ImageUtils.save(uploadBp, getIconPath(), Bitmap.CompressFormat.JPEG);
             }
             mHeadIcon.setImageBitmap(uploadBp);
-            updateImage(url,getIconPath());
+//            updateImage(url,getIconPath());
         }
     }
 
@@ -239,18 +240,17 @@ public class RegistAccountActivity extends BaseActionActivity implements View.On
     }
 
     @Override
-    public RegisterBean getRegistBean() {
-        RegisterBean registerBean = new RegisterBean();
-        registerBean.setUserName(mUserName.getText().toString());
-        registerBean.setPassword(mPassword.getText().toString());
-        registerBean.setHeadPath(getIconPath());
-        registerBean.setEmail(mEmail.getText().toString());
-        registerBean.setName(mName.getText().toString());
-        registerBean.setBirthday(mBirthday.getText().toString());
-        registerBean.setProvince(mProvince.getText().toString());
-        registerBean.setAddress(mAddress.getText().toString());
-        registerBean.setOrganization(mOrganization.getText().toString());
-        return registerBean;
+    public RegistBean getRegistBean() {
+        RegistBean registBean = new RegistBean();
+        registBean.setUsername(mUserName.getText().toString());
+        registBean.setPassword(mPassword.getText().toString());
+        registBean.setEmail(mEmail.getText().toString());
+        registBean.setName(mName.getText().toString());
+        registBean.setBirthday(mBirthday.getText().toString());
+        registBean.setAddress(mProvince.getText().toString());
+        registBean.setDetialaddress(mAddress.getText().toString());
+        registBean.setMechanism(mOrganization.getText().toString());
+        return registBean;
     }
 
     @Override
@@ -266,7 +266,7 @@ public class RegistAccountActivity extends BaseActionActivity implements View.On
     }
 
     private String getIconPath() {
-        return SDCardUtils.getSDCardPath()  + "headicon.jpeg";
+        return SDCardUtils.getSDCardPaths(false).get(0)  + "headicon.jpeg";
     }
 
     @Override

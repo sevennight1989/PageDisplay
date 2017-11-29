@@ -1,6 +1,6 @@
 package com.zp.gossiptripe.main.personal.login;
 
-import com.blankj.utilcode.utils.EncryptUtils;
+import com.blankj.utilcode.util.EncryptUtils;
 import com.zp.gossiptripe.main.personal.PersonBean;
 
 /**

@@ -12,8 +12,8 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.blankj.utilcode.utils.ImageUtils;
-import com.blankj.utilcode.utils.SDCardUtils;
+import com.blankj.utilcode.util.ImageUtils;
+import com.blankj.utilcode.util.SDCardUtils;
 import com.squareup.picasso.Picasso;
 import com.zp.gossiptripe.R;
 import com.zp.gossiptripe.viewutils.ScreenDialogUtils;
@@ -145,7 +145,7 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
     private void getImageToView(Intent data) {
         Bundle bundle = data.getExtras();
         if (bundle != null) {
-            String path = SDCardUtils.getSDCardPath();
+            String path = SDCardUtils.getSDCardPaths(false).get(0);
             uploadBp = bundle.getParcelable("data");
             if (SDCardUtils.isSDCardEnable()) {
                 ImageUtils.save(uploadBp, path + File.separator + PersonConstants.HEAD_UPDATE_NAME, Bitmap.CompressFormat.JPEG);

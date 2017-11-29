@@ -3,6 +3,7 @@ package com.zp.gossiptripe;
 import android.app.Application;
 import android.widget.Button;
 
+import com.blankj.utilcode.util.Utils;
 import com.orhanobut.logger.Logger;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
@@ -14,9 +15,13 @@ import org.xutils.x;
  * Created by uiprj on 9/30/16.
  */
 public class MainApplication extends Application {
+
+    private static MainApplication mInstance;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        mInstance = this;
         PushAgent mPushAgent = PushAgent.getInstance(this);
         //注册推送服务，每次调用register方法都会回调该接口
         mPushAgent.register(new IUmengRegisterCallback() {
@@ -34,5 +39,10 @@ public class MainApplication extends Application {
         });
         x.Ext.init(this);
         x.Ext.setDebug(BuildConfig.DEBUG);
+        Utils.init(this);
+    }
+
+    public static MainApplication getInstance(){
+        return mInstance;
     }
 }

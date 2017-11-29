@@ -1,6 +1,7 @@
 package com.zp.gossiptripe.main.personal.regist;
 
 import com.zp.gossiptripe.main.personal.PersonBean;
+import com.zp.gossiptripe.main.personal.regist.model.RegistBean;
 
 /**
  * Created by uiprj on 11/29/16.
@@ -8,7 +9,7 @@ import com.zp.gossiptripe.main.personal.PersonBean;
 
 public interface IRegistView {
 
-    public RegisterBean getRegistBean();
+    public RegistBean getRegistBean();
 
     public void onRegistSuccess(PersonBean personBean);
 

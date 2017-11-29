@@ -16,8 +16,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.blankj.utilcode.utils.KeyboardUtils;
-import com.blankj.utilcode.utils.SPUtils;
+import com.blankj.utilcode.util.KeyboardUtils;
+import com.blankj.utilcode.util.SPUtils;
 import com.orhanobut.logger.Logger;
 import com.squareup.picasso.Picasso;
 import com.zp.gossiptripe.R;
@@ -76,7 +76,7 @@ public class PersonalFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mSp = new SPUtils(getContext(), this.getClass().getSimpleName());
+        mSp = SPUtils.getInstance(this.getClass().getSimpleName());
         mPresent = new LoginPresent(this);
     }
 
@@ -184,8 +184,8 @@ public class PersonalFragment extends Fragment implements View.OnClickListener, 
             switch (requestCode) {
                 case REGIST_REQUEST_CODE:
                     mPersonBeam = (PersonBean) data.getSerializableExtra(REQUEST_REGIST_INFO);
-                    mSp.putBoolean(LOGIN_TAG, true);
-                    mSp.putString(LOGIN_USER_INFO, data.getStringExtra(LOGIN_USER_INFO));
+                    mSp.put(LOGIN_TAG, true);
+                    mSp.put(LOGIN_USER_INFO, data.getStringExtra(LOGIN_USER_INFO));
                     Logger.d(data.getStringExtra(LOGIN_USER_INFO));
                     isLogin = mSp.getBoolean(LOGIN_TAG, defaultLoginStatus);
                     updateView();
@@ -213,8 +213,8 @@ public class PersonalFragment extends Fragment implements View.OnClickListener, 
         Toast.makeText(getContext(), getResources().getString(R.string.loginSuccess), Toast.LENGTH_SHORT).show();
         KeyboardUtils.hideSoftInput(getActivity());
         Logger.d(personBean.toString());
-        mSp.putBoolean(LOGIN_TAG, true);
-        mSp.putString(LOGIN_USER_INFO, getUserName());
+        mSp.put(LOGIN_TAG, true);
+        mSp.put(LOGIN_USER_INFO, getUserName());
         isLogin = mSp.getBoolean(LOGIN_TAG, defaultLoginStatus);
         mPersonBeam = personBean;
         updateView();
@@ -224,8 +224,8 @@ public class PersonalFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void logoffSuccess() {
         Toast.makeText(getContext(), getResources().getString(R.string.logoffSuccess), Toast.LENGTH_SHORT).show();
-        mSp.putBoolean(LOGIN_TAG, false);
-        mSp.putString(LOGIN_USER_INFO, "");
+        mSp.put(LOGIN_TAG, false);
+        mSp.put(LOGIN_USER_INFO, "");
         isLogin = mSp.getBoolean(LOGIN_TAG, defaultLoginStatus);
         updateView();
     }

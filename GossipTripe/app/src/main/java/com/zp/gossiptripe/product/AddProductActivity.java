@@ -19,8 +19,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.blankj.utilcode.utils.ImageUtils;
-import com.blankj.utilcode.utils.SDCardUtils;
+import com.blankj.utilcode.util.ImageUtils;
+import com.blankj.utilcode.util.SDCardUtils;
 import com.orhanobut.logger.Logger;
 import com.zp.gossiptripe.R;
 import com.zp.gossiptripe.event.ProductEvent;
@@ -145,7 +145,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         Bundle bundle = data.getExtras();
         if (bundle != null) {
             uploadBp = bundle.getParcelable("data");
-            String path = SDCardUtils.getSDCardPath();
+            String path = SDCardUtils.getSDCardPaths(false).get(0);
             if (SDCardUtils.isSDCardEnable()) {
                 ImageUtils.save(uploadBp, path + File.separator + PersonConstants.PRODUCT_UPDATE_NAME, Bitmap.CompressFormat.JPEG);
             }

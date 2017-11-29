@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.astuetz.PagerSlidingTabStrip;
-import com.blankj.utilcode.utils.SizeUtils;
+import com.blankj.utilcode.util.SizeUtils;
 import com.zp.gossiptripe.R;
 import com.zp.gossiptripe.main.gallery.choice.ChoiceFragment;
 import com.zp.gossiptripe.main.gallery.latest.LatestUpdateFragment;
@@ -59,7 +59,7 @@ public class GalleryFragment extends Fragment implements PagerSlidingTabStrip.On
         mVp.setAdapter(new GalleryFragmentAdapter(fm));
         mtab.setViewPager(mVp);
         mtab.setSelectedTextColorResource(R.color.tap_personal);
-        mtab.setTextSize(SizeUtils.dp2px(getContext(),20));
+        mtab.setTextSize(SizeUtils.dp2px(20));
         mtab.setTabPaddingLeftRight(100);
 
         mtab.setOnPositionChangeListener(this);
