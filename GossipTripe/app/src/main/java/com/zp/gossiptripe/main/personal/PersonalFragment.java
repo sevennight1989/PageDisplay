@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +18,12 @@ import android.widget.Toast;
 import com.blankj.utilcode.util.KeyboardUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.orhanobut.logger.Logger;
-import com.squareup.picasso.Picasso;
 import com.zp.gossiptripe.R;
 import com.zp.gossiptripe.main.personal.forgetpsd.ForgetPasswordActivity;
 import com.zp.gossiptripe.main.personal.login.IPersonInfoView;
 import com.zp.gossiptripe.main.personal.login.LoginPresent;
 import com.zp.gossiptripe.main.personal.regist.RegistAccountActivity;
-import com.zp.gossiptripe.test.PersonInfoData;
+import com.zp.gossiptripe.main.personal.regist.model.UserBaseInfoBean;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -42,7 +40,7 @@ public class PersonalFragment extends Fragment implements View.OnClickListener, 
     private TextView mAgeAndLocation;
     private TextView mOrganizaion;
     private LinearLayout mPersonInfoSet;
-    private PersonBean mPersonBeam;
+    private UserBaseInfoBean mPersonBeam;
 
     private boolean isLogin;
     private static final String LOGIN_TAG = "login_tag";
@@ -88,14 +86,8 @@ public class PersonalFragment extends Fragment implements View.OnClickListener, 
         isLogin = mSp.getBoolean(LOGIN_TAG, defaultLoginStatus);
         initViews();
         if (isLogin) {
-            //load person info ui
-            boolean online = getResources().getBoolean(R.bool.onlineMode);
-            if (!online) {
-                loadOfflineData();
-            }
             setPersonInfoData();
         } else {
-            //load login ui
             setLoginData();
         }
         initViews();
@@ -134,14 +126,10 @@ public class PersonalFragment extends Fragment implements View.OnClickListener, 
     }
 
     private void setPersonInfoData() {
-        Picasso.with(getContext()).load(mPersonBeam.getmIconPath()).placeholder(R.mipmap.touxiang).into(mHead);
-        mName.setText(mPersonBeam.getmName());
-        mAgeAndLocation.setText(getResources().getString(R.string.ageAndLocation, mPersonBeam.getmAge(), mPersonBeam.getmProvince()));
-        mOrganizaion.setText(mPersonBeam.getmOrganization());
-    }
-
-    private void loadOfflineData() {
-        mPersonBeam = PersonInfoData.getPersonData();
+//        Picasso.with(getContext()).load(mPersonBeam.getmIconPath()).placeholder(R.mipmap.touxiang).into(mHead);
+        mName.setText(mPersonBeam.getName());
+        mAgeAndLocation.setText(getResources().getString(R.string.ageAndLocation, 5, mPersonBeam.getAddress()));
+        mOrganizaion.setText(mPersonBeam.getMechanism());
     }
 
     @Override
@@ -150,7 +138,7 @@ public class PersonalFragment extends Fragment implements View.OnClickListener, 
             case R.id.personInfoSet:
                 Intent personInfoIntent = new Intent(getContext(), PersonInfoActivity.class);
                 Bundle b = new Bundle();
-                b.putSerializable(TOPERSON_INFO, mPersonBeam);
+                b.putParcelable(TOPERSON_INFO, mPersonBeam);
                 personInfoIntent.putExtras(b);
                 startActivity(personInfoIntent);
                 break;
@@ -183,7 +171,7 @@ public class PersonalFragment extends Fragment implements View.OnClickListener, 
         if (resultCode != RESULT_CANCELED) {
             switch (requestCode) {
                 case REGIST_REQUEST_CODE:
-                    mPersonBeam = (PersonBean) data.getSerializableExtra(REQUEST_REGIST_INFO);
+                    mPersonBeam = data.getParcelableExtra(REQUEST_REGIST_INFO);
                     mSp.put(LOGIN_TAG, true);
                     mSp.put(LOGIN_USER_INFO, data.getStringExtra(LOGIN_USER_INFO));
                     Logger.d(data.getStringExtra(LOGIN_USER_INFO));
@@ -209,14 +197,13 @@ public class PersonalFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
-    public void loginSuccess(PersonBean personBean) {
+    public void loginSuccess(UserBaseInfoBean userBaseInfoBean) {
         Toast.makeText(getContext(), getResources().getString(R.string.loginSuccess), Toast.LENGTH_SHORT).show();
         KeyboardUtils.hideSoftInput(getActivity());
-        Logger.d(personBean.toString());
         mSp.put(LOGIN_TAG, true);
         mSp.put(LOGIN_USER_INFO, getUserName());
         isLogin = mSp.getBoolean(LOGIN_TAG, defaultLoginStatus);
-        mPersonBeam = personBean;
+        mPersonBeam = userBaseInfoBean;
         updateView();
         setPersonInfoData();
     }

@@ -55,12 +55,11 @@ public class LatestUpdateFragment extends Fragment implements IViewHandle {
     private void initViews() {
         mLastUpdateList = (RecyclerView) root.findViewById(R.id.lastupdateList);
         initRequest();
-        boolean isOnLine = getResources().getBoolean(R.bool.onlineMode);
-        if (isOnLine) {
-            doRequest();
-        } else {
+//        if (isOnLine) {
+//            doRequest();
+//        } else {
             loadOfflineData();
-        }
+//        }
 
     }
 

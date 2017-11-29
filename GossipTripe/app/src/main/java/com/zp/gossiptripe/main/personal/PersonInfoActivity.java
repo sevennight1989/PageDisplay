@@ -16,6 +16,7 @@ import com.blankj.utilcode.util.ImageUtils;
 import com.blankj.utilcode.util.SDCardUtils;
 import com.squareup.picasso.Picasso;
 import com.zp.gossiptripe.R;
+import com.zp.gossiptripe.main.personal.regist.model.UserBaseInfoBean;
 import com.zp.gossiptripe.viewutils.ScreenDialogUtils;
 
 import org.w3c.dom.Text;
@@ -38,7 +39,7 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
     private TextView mOrganizationValue;
     CircleImageView mHeadImage;
     Bitmap uploadBp;
-    PersonBean mPersonBean;
+    UserBaseInfoBean mPersonBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
         }
-        mPersonBean = (PersonBean) getIntent().getSerializableExtra(TOPERSON_INFO);
+        mPersonBean =  getIntent().getParcelableExtra(TOPERSON_INFO);
         initViews();
 
     }
@@ -85,13 +86,13 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
 
 
     private void loadData() {
-        PersonBean pBean = mPersonBean;
-        mNameValue.setText(pBean.getmName());
-        mAddressValue.setText(pBean.getmLocation());
-        mBirthdayValue.setText(pBean.getmBirthday());
-        mOrganizationValue.setText(pBean.getmOrganization());
-        Picasso.with(this).load(pBean.getmIconPath())
-        .placeholder(R.mipmap.touxiang).into(mHeadImage);
+        UserBaseInfoBean pBean = mPersonBean;
+        mNameValue.setText(pBean.getName());
+        mAddressValue.setText(pBean.getAddress());
+        mBirthdayValue.setText(pBean.getBirthday());
+        mOrganizationValue.setText(pBean.getMechanism());
+//        Picasso.with(this).load(pBean.getmIconPath())
+//        .placeholder(R.mipmap.touxiang).into(mHeadImage);
     }
 
 

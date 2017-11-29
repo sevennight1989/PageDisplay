@@ -1,7 +1,7 @@
 package com.zp.gossiptripe.main.personal.login;
 
 import com.blankj.utilcode.util.EncryptUtils;
-import com.zp.gossiptripe.main.personal.PersonBean;
+import com.zp.gossiptripe.main.personal.regist.model.UserBaseInfoBean;
 
 /**
  * Created by uiprj on 11/28/16.
@@ -27,8 +27,8 @@ public class LoginPresent {
         }
         action.login(userName, EncryptUtils.encryptMD5ToString(password), new IOnActionListener() {
             @Override
-            public void loginSuccess(PersonBean personBean) {
-                mPersonInfoView.loginSuccess(personBean);
+            public void loginSuccess(UserBaseInfoBean userBaseInfoBean) {
+                mPersonInfoView.loginSuccess(userBaseInfoBean);
             }
 
             @Override
@@ -51,7 +51,7 @@ public class LoginPresent {
     public void logOff() {
         action.logoff(mPersonInfoView.getLoginUserName(), new IOnActionListener() {
             @Override
-            public void loginSuccess(PersonBean personBean) {
+            public void loginSuccess(UserBaseInfoBean userBaseInfoBean) {
 
             }
 

@@ -1,6 +1,6 @@
 package com.zp.gossiptripe.main.personal.regist;
 
-import com.zp.gossiptripe.main.personal.PersonBean;
+import com.zp.gossiptripe.main.personal.regist.model.UserBaseInfoBean;
 
 /**
  * Created by uiprj on 11/29/16.
@@ -20,8 +20,8 @@ public class RegistPresent {
     public void registAccount() {
         mRegistImpl.registAccount(mRegistView.getRegistBean(), new IOnRequestListener() {
             @Override
-            public void onSuccess(PersonBean personBean) {
-                mRegistView.onRegistSuccess(personBean);
+            public void onSuccess(UserBaseInfoBean userBaseInfoBean) {
+                mRegistView.onRegistSuccess(userBaseInfoBean);
             }
 
             @Override

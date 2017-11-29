@@ -16,14 +16,15 @@ import com.bigkoo.pickerview.TimePickerView;
 import com.blankj.utilcode.util.ImageUtils;
 import com.blankj.utilcode.util.KeyboardUtils;
 import com.blankj.utilcode.util.SDCardUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.lljjcoder.citypickerview.widget.CityPicker;
 import com.orhanobut.logger.Logger;
 import com.zp.gossiptripe.R;
 import com.zp.gossiptripe.main.personal.BaseActionActivity;
-import com.zp.gossiptripe.main.personal.PersonBean;
 import com.zp.gossiptripe.main.personal.PersonConstants;
 import com.zp.gossiptripe.main.personal.PersonalFragment;
 import com.zp.gossiptripe.main.personal.regist.model.RegistBean;
+import com.zp.gossiptripe.main.personal.regist.model.UserBaseInfoBean;
 import com.zp.gossiptripe.utils.DateUitls;
 import com.zp.gossiptripe.viewutils.ScreenDialogUtils;
 
@@ -39,7 +40,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RegistAccountActivity extends BaseActionActivity implements View.OnClickListener, IRegistView {
 
-    public static final int ERROR_CODE_REPEAT = 0;
     public static final int ERROT_CODE_NULL = 1;
     private RegistPresent mRegistPresent;
     private TimePickerView mTimePickerView;
@@ -254,11 +254,11 @@ public class RegistAccountActivity extends BaseActionActivity implements View.On
     }
 
     @Override
-    public void onRegistSuccess(PersonBean personBean) {
+    public void onRegistSuccess(UserBaseInfoBean personBean) {
         Toast.makeText(this, getResources().getText(R.string.registSuccess), Toast.LENGTH_SHORT).show();
         Intent backIntent = new Intent();
         Bundle b = new Bundle();
-        b.putSerializable(PersonalFragment.REQUEST_REGIST_INFO, personBean);
+        b.putParcelable(PersonalFragment.REQUEST_REGIST_INFO, personBean);
         b.putString(PersonalFragment.LOGIN_USER_INFO, mUserName.getText().toString());
         backIntent.putExtras(b);
         setResult(PersonalFragment.REGIST_REQUEST_CODE, backIntent);
@@ -266,20 +266,17 @@ public class RegistAccountActivity extends BaseActionActivity implements View.On
     }
 
     private String getIconPath() {
-        return SDCardUtils.getSDCardPaths(false).get(0)  + "headicon.jpeg";
+        return SDCardUtils.getSDCardPaths(false).get(0)+ File.separator+ "headicon.jpeg";
     }
 
     @Override
     public void onFailed(int errorCode) {
         String errorMsg = "";
         switch (errorCode) {
-            case ERROR_CODE_REPEAT:
-                errorMsg = getResources().getString(R.string.hasRepeatUserName);
-                break;
             case ERROT_CODE_NULL:
                 errorMsg = getResources().getString(R.string.hasNullItem);
                 break;
         }
-        Toast.makeText(this, errorMsg, Toast.LENGTH_SHORT).show();
+        ToastUtils.showShort(errorMsg);
     }
 }

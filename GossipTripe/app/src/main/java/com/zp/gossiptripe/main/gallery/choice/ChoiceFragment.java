@@ -56,12 +56,12 @@ public class ChoiceFragment extends Fragment implements IViewHandle {
     private void initViews() {
         mChoiceList = (RecyclerView) root.findViewById(R.id.choiceList);
         initRequest();
-        boolean isOnLine = getResources().getBoolean(R.bool.onlineMode);
-        if (isOnLine) {
-            doRequest();
-        } else {
+
+//        if (isOnLine) {
+//            doRequest();
+//        } else {
             loadOfflineData();
-        }
+//        }
     }
 
     private void initRequest() {
